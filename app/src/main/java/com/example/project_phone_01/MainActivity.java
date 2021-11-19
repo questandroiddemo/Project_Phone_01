@@ -4,15 +4,29 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.annotation.SuppressLint;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.project_phone_01.adapter.FragmentAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends AppCompatActivity {
+import aidlservice.IMyAidlInterface;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     TabLayout tabLayout;
     ViewPager2 pager2;
     FragmentAdapter adapter;
+    IMyAidlInterface iMyAidlInterface;
+    FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout = findViewById(R.id.tabLayout);
         pager2 = findViewById(R.id.viewpager2);
+
+        floatingActionButton = findViewById(R.id.fbtn);
+        floatingActionButton.setOnClickListener(this);
 
         FragmentManager fm = getSupportFragmentManager();
         adapter = new FragmentAdapter(fm, getLifecycle());
@@ -55,6 +72,41 @@ public class MainActivity extends AppCompatActivity {
                 tabLayout.selectTab(tabLayout.getTabAt(position));
             }
         });
+        bindToAIDLService();
+
+    }
+
+
+    private void bindToAIDLService() {
+        Intent aidlServiceintent = new Intent();
+        aidlServiceintent.setClassName("com.example.phone_service", "com.example.phone_service.MyService");
+        bindService(aidlServiceintent, serviceConnectionObject, BIND_AUTO_CREATE);
+        Log.d("gg", "connected");
+    }
+
+    ServiceConnection serviceConnectionObject = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            Log.d("fff", "connected");
+            iMyAidlInterface = IMyAidlInterface.Stub.asInterface(iBinder);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+        }
+    };
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void onClick(View v) {
+
+        try {
+            String str = iMyAidlInterface.getText();
+            Log.d("eeeeeee", str);
+            Toast.makeText(this,str,Toast.LENGTH_SHORT).show();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
 
     }
