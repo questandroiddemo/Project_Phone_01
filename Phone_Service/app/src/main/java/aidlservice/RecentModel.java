@@ -1,4 +1,4 @@
-package com.example.phone_service;
+package aidlservice;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -6,7 +6,6 @@ import android.os.Parcelable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Comparator;
 import java.util.Date;
 
 public class RecentModel implements Parcelable {

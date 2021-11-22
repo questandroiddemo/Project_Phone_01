@@ -11,6 +11,10 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import aidlservice.ContactModel;
+import aidlservice.FavoriteModel;
+import aidlservice.RecentModel;
+
 public class PhoneDbHandler extends SQLiteOpenHelper {
 
     public PhoneDbHandler(Context context) {

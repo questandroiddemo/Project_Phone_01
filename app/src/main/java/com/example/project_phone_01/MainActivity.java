@@ -19,14 +19,17 @@ import com.example.project_phone_01.adapter.FragmentAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
-import aidlservice.IMyAidlInterface;
+import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+import aidlservice.IMyAidlInterface;
+import aidlservice.RecentModel;
+
+public class MainActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager2 pager2;
     FragmentAdapter adapter;
     IMyAidlInterface iMyAidlInterface;
-    FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         tabLayout = findViewById(R.id.tabLayout);
         pager2 = findViewById(R.id.viewpager2);
-
-        floatingActionButton = findViewById(R.id.fbtn);
-        floatingActionButton.setOnClickListener(this);
-
         FragmentManager fm = getSupportFragmentManager();
         adapter = new FragmentAdapter(fm, getLifecycle());
         pager2.setAdapter(adapter);
@@ -53,6 +52,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onTabSelected(TabLayout.Tab tab) {
                 pager2.setCurrentItem(tab.getPosition());
 
+                try {
+                    //demo: retrieving lists (string, parcelables: contact, fav, recents) from service app
+                    switch (tab.getPosition()) {
+                        case 0:
+                            Toast.makeText(getApplicationContext(), iMyAidlInterface.getList().get(0), Toast.LENGTH_SHORT).show();
+                            break;
+                        case 1:
+                            Toast.makeText(getApplicationContext(), iMyAidlInterface.getList().get(1) + " contains: " +
+                                    iMyAidlInterface.getAllContacts().size()+" items", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 2:
+                            Toast.makeText(getApplicationContext(), iMyAidlInterface.getList().get(2) + " contains: " +
+                                    iMyAidlInterface.getAllFavorites().size() +" items", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 3:
+                            Toast.makeText(getApplicationContext(), iMyAidlInterface.getList().get(3) + " contains: " +
+                                    iMyAidlInterface.getAllRecents().size()+" items", Toast.LENGTH_SHORT).show();
+                            break;
+                    }
+
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
@@ -76,18 +98,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
     private void bindToAIDLService() {
         Intent aidlServiceintent = new Intent();
         aidlServiceintent.setClassName("com.example.phone_service", "com.example.phone_service.MyService");
         bindService(aidlServiceintent, serviceConnectionObject, BIND_AUTO_CREATE);
-        Log.d("gg", "connected");
     }
 
     ServiceConnection serviceConnectionObject = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-            Log.d("fff", "connected");
+            Log.d("status", "disconnected");
             iMyAidlInterface = IMyAidlInterface.Stub.asInterface(iBinder);
         }
 
@@ -96,18 +116,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     };
 
-    @SuppressLint("SetTextI18n")
-    @Override
-    public void onClick(View v) {
-
-        try {
-            String str = iMyAidlInterface.getText();
-            Log.d("eeeeeee", str);
-            Toast.makeText(this,str,Toast.LENGTH_SHORT).show();
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-
-
-    }
 }

@@ -1,4 +1,7 @@
-package com.example.project_phone_01.model;
+package aidlservice;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -6,11 +9,43 @@ import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
 
-public class RecentModel {
+public class RecentModel implements Parcelable {
 
 
     private int id;
     private String name, number, date;
+
+    protected RecentModel(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        number = in.readString();
+        date = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(number);
+        dest.writeString(date);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<RecentModel> CREATOR = new Creator<RecentModel>() {
+        @Override
+        public RecentModel createFromParcel(Parcel in) {
+            return new RecentModel(in);
+        }
+
+        @Override
+        public RecentModel[] newArray(int size) {
+            return new RecentModel[size];
+        }
+    };
 
     public int getId() {
         return id;

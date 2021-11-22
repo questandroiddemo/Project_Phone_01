@@ -1,18 +1,11 @@
 package com.example.project_phone_01.view;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.os.Bundle;
 
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.provider.CallLog;
-import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,16 +13,16 @@ import android.widget.TextView;
 
 import com.example.project_phone_01.R;
 import com.example.project_phone_01.adapter.RecentAdapter;
-import com.example.project_phone_01.model.RecentModel;
+import aidlservice.RecentModel;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
 public class RecentFragment extends Fragment {
     private RecyclerView recyclerView;
     private View v;
+
 
     public RecentFragment() {
         // Required empty public constructor

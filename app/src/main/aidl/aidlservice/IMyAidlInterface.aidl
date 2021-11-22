@@ -1,12 +1,19 @@
 // IMyAidlInterface.aidl
 package aidlservice;
+import aidlservice.RecentModel;
+import aidlservice.ContactModel;
+import aidlservice.FavoriteModel;
 
-// Declare any non-default types here with import statements
 
 interface IMyAidlInterface {
-    /**
-     * Demonstrates some basic types that you can use as parameters
-     * and return values in AIDL.
-     */
+
+
 String getText();
+void placeCall(String number);
+List<String> getList();
+
+//parcelables
+List<RecentModel> getAllRecents();
+List<ContactModel> getAllContacts();
+List<FavoriteModel> getAllFavorites();
 }

@@ -18,12 +18,5 @@
         android:layout_height="match_parent"
         android:layout_below="@id/tabLayout" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fbtn"
-        android:layout_width="20sp"
-        android:layout_height="20dp"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="50dp" />
-
 
 </RelativeLayout>
