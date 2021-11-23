@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager2 pager2;
     FragmentAdapter adapter;
-    IMyAidlInterface iMyAidlInterface;
+    static IMyAidlInterface iMyAidlInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
                         case 1:
                             Toast.makeText(getApplicationContext(), iMyAidlInterface.getList().get(1) + " contains: " +
                                     iMyAidlInterface.getAllContacts().size()+" items", Toast.LENGTH_SHORT).show();
+                            Log.d("Trial",""+iMyAidlInterface.getAllContacts().get(1).getName());
+                            ArrayList contactList = new ArrayList();
                             break;
                         case 2:
                             Toast.makeText(getApplicationContext(), iMyAidlInterface.getList().get(2) + " contains: " +
@@ -115,5 +117,9 @@ public class MainActivity extends AppCompatActivity {
         public void onServiceDisconnected(ComponentName name) {
         }
     };
+
+    public static IMyAidlInterface getAidl(){
+        return iMyAidlInterface;
+    }
 
 }
