@@ -3,12 +3,246 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.PhoneFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="322dp"
+            android:layout_margin="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="2"
+            android:paddingBottom="1dp">
+
+
+            <EditText
+                android:id="@+id/edtPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="71dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="0dp"
+                android:background="#fff"
+                android:backgroundTint="#D5D3D3"
+                android:gravity="center"
+                android:hint="Phone No."
+                android:minHeight="48dp"
+                android:paddingTop="10dp"
+                android:textSize="22sp" />
+
+            <ImageButton
+                android:id="@+id/btndel"
+                android:layout_width="71dp"
+                android:layout_height="86dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="-9dp"
+                android:background="@android:drawable/ic_input_delete"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:onClick="buttonClickEvent"
+                android:text="Del"
+                android:textColor="#fff"
+                android:textSize="25sp"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="407dp"
+            android:layout_below="@+id/relativeLayout"
+            android:layout_weight="7"
+            android:orientation="vertical"
+            android:weightSum="5">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <Button
+                    android:id="@+id/btnOne"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner"
+                    android:onClick="buttonClickEvent"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    app:backgroundTint="@android:color/holo_blue_dark" />
+                <Button
+                    android:id="@+id/btnTwo"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner"
+                    android:onClick="buttonClickEvent"
+                    android:text="2"
+                    android:textSize="30sp"
+                    app:backgroundTint="@android:color/holo_blue_dark" />
+
+                <Button
+                    android:id="@+id/btnThree"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner"
+                    android:onClick="buttonClickEvent"
+                    android:text="3"
+                    android:textSize="30sp"
+                    app:backgroundTint="@android:color/holo_blue_dark" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <Button
+                    android:id="@+id/btnFour"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner"
+                    android:onClick="buttonClickEvent"
+                    android:text="4"
+                    android:textSize="30sp"
+                    app:backgroundTint="@android:color/holo_blue_dark" />
+
+                <Button
+                    android:id="@+id/btnFive"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner"
+                    android:onClick="buttonClickEvent"
+                    android:text="5"
+                    android:textSize="30sp"
+                    app:backgroundTint="@android:color/holo_blue_dark" />
+
+                <Button
+                    android:id="@+id/btnSix"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner"
+                    android:onClick="buttonClickEvent"
+                    android:text="6"
+                    android:textSize="30sp"
+                    app:backgroundTint="@android:color/holo_blue_dark" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <Button
+                    android:id="@+id/btnSeven"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner"
+                    android:onClick="buttonClickEvent"
+                    android:text="7"
+                    android:textSize="30sp"
+                    app:backgroundTint="@android:color/holo_blue_dark" />
+
+                <Button
+                    android:id="@+id/btnEight"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner"
+                    android:onClick="buttonClickEvent"
+                    android:text="8"
+                    android:textSize="30sp"
+                    app:backgroundTint="@android:color/holo_blue_dark" />
+
+                <Button
+                    android:id="@+id/btnNine"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner"
+                    android:onClick="buttonClickEvent"
+                    android:text="9"
+                    android:textSize="30sp"
+                    app:backgroundTint="@android:color/holo_blue_dark" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <Button
+                    android:id="@+id/btnempty"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner"
+                    android:onClick="buttonClickEvent"
+                    android:textSize="30sp"
+                    app:backgroundTint="@color/white"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <Button
+                    android:id="@+id/btnZero"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner"
+                    android:onClick="buttonClickEvent"
+                    android:text="0"
+                    android:textSize="30sp"
+                    app:backgroundTint="@android:color/holo_blue_dark" />
+
+                <Button
+                    android:id="@+id/btnCall"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_corner"
+                    android:onClick="buttonClickEvent"
+                    android:text="Call"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    app:backgroundTint="#3DB60E" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
 
 </FrameLayout>
