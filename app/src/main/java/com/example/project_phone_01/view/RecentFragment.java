@@ -16,15 +16,18 @@ import android.widget.TextView;
 import com.example.project_phone_01.MainActivity;
 import com.example.project_phone_01.R;
 import com.example.project_phone_01.adapter.RecentAdapter;
+import com.example.project_phone_01.presenter.RecentPresenter;
+
 import aidlservice.RecentModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class RecentFragment extends Fragment {
+public class RecentFragment extends Fragment implements RecentPresenter.View{
     private RecyclerView recyclerView;
     private View v;
+    private RecentPresenter presenter;
 
 
     public RecentFragment() {
@@ -34,13 +37,16 @@ public class RecentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        presenter = new RecentPresenter(this);
+
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_recent, container, false);
         recyclerView = v.findViewById(R.id.rv_recents);
         TextView textView = v.findViewById(R.id.empty_view);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        RecyclerView.LayoutManager layoutManager = linearLayoutManager;
-        recyclerView.setLayoutManager(layoutManager);
+
+
+        presenter.recentAdapter();
 
         getCallLogs();
 
@@ -77,5 +83,15 @@ public class RecentFragment extends Fragment {
 
     private void getCallLogs() {
 
+    }
+
+
+    @Override
+    public void recentAdapterInView() {
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        RecyclerView.LayoutManager layoutManager = linearLayoutManager;
+        recyclerView.setLayoutManager(layoutManager);
+        Log.d("TAG", "recentAdapterInView: ");
     }
 }
