@@ -16,4 +16,10 @@ List<String> getList();
 List<RecentModel> getAllRecents();
 List<ContactModel> getAllContacts();
 List<FavoriteModel> getAllFavorites();
+
+void deleteFavorite(int id);
+void addToFavorite(in ContactModel contact);
+void addToRecent(in ContactModel contact);
+
+
 }

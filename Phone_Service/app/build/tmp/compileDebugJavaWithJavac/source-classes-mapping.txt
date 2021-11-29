@@ -1,13 +1,14 @@
 com/example/phone_service/BuildConfig.java
  com.example.phone_service.BuildConfig
-com/example/phone_service/PhoneDbHandler.java
- com.example.phone_service.PhoneDbHandler
-aidlservice/FavoriteModel.java
- aidlservice.FavoriteModel
- aidlservice.FavoriteModel$1
 aidlservice/RecentModel.java
  aidlservice.RecentModel
  aidlservice.RecentModel$1
+aidlservice/FavoriteModel.java
+ aidlservice.FavoriteModel
+ aidlservice.FavoriteModel$1
+aidlservice/ContactModel.java
+ aidlservice.ContactModel
+ aidlservice.ContactModel$1
 com/example/phone_service/Params.java
  com.example.phone_service.Params
 aidlservice/IMyAidlInterface.java
@@ -15,11 +16,10 @@ aidlservice/IMyAidlInterface.java
  aidlservice.IMyAidlInterface$Default
  aidlservice.IMyAidlInterface$Stub
  aidlservice.IMyAidlInterface$Stub$Proxy
+com/example/phone_service/PhoneDbHandler.java
+ com.example.phone_service.PhoneDbHandler
 com/example/phone_service/MainActivity.java
  com.example.phone_service.MainActivity
-aidlservice/ContactModel.java
- aidlservice.ContactModel
- aidlservice.ContactModel$1
 com/example/phone_service/MyService.java
  com.example.phone_service.MyService
  com.example.phone_service.MyService$1

@@ -52,31 +52,31 @@ public class MainActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 pager2.setCurrentItem(tab.getPosition());
 
-                try {
-                    //demo: retrieving lists (string, parcelables: contact, fav, recents) from service app
-                    switch (tab.getPosition()) {
-                        case 0:
-                            Toast.makeText(getApplicationContext(), iMyAidlInterface.getList().get(0), Toast.LENGTH_SHORT).show();
-                            break;
-                        case 1:
-                            Toast.makeText(getApplicationContext(), iMyAidlInterface.getList().get(1) + " contains: " +
-                                    iMyAidlInterface.getAllContacts().size()+" items", Toast.LENGTH_SHORT).show();
-                            Log.d("Trial",""+iMyAidlInterface.getAllContacts().get(1).getName());
-                            ArrayList contactList = new ArrayList();
-                            break;
-                        case 2:
-                            Toast.makeText(getApplicationContext(), iMyAidlInterface.getList().get(2) + " contains: " +
-                                    iMyAidlInterface.getAllFavorites().size() +" items", Toast.LENGTH_SHORT).show();
-                            break;
-                        case 3:
-                            Toast.makeText(getApplicationContext(), iMyAidlInterface.getList().get(3) + " contains: " +
-                                    iMyAidlInterface.getAllRecents().size()+" items", Toast.LENGTH_SHORT).show();
-                            break;
-                    }
-
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
+//                try {
+//                    //demo: retrieving lists (string, parcelables: contact, fav, recents) from service app
+//                    switch (tab.getPosition()) {
+//                        case 0:
+//                            Toast.makeText(getApplicationContext(), iMyAidlInterface.getList().get(0), Toast.LENGTH_SHORT).show();
+//                            break;
+//                        case 1:
+//                            Toast.makeText(getApplicationContext(), iMyAidlInterface.getList().get(1) + " contains: " +
+//                                    iMyAidlInterface.getAllContacts().size()+" items", Toast.LENGTH_SHORT).show();
+//                            Log.d("Trial",""+iMyAidlInterface.getAllContacts().get(1).getName());
+//                            ArrayList contactList = new ArrayList();
+//                            break;
+//                        case 2:
+//                            Toast.makeText(getApplicationContext(), iMyAidlInterface.getList().get(2) + " contains: " +
+//                                    iMyAidlInterface.getAllFavorites().size() +" items", Toast.LENGTH_SHORT).show();
+//                            break;
+//                        case 3:
+//                            Toast.makeText(getApplicationContext(), iMyAidlInterface.getList().get(3) + " contains: " +
+//                                    iMyAidlInterface.getAllRecents().size()+" items", Toast.LENGTH_SHORT).show();
+//                            break;
+//                    }
+//
+//                } catch (RemoteException e) {
+//                    e.printStackTrace();
+//                }
             }
 
             @Override
@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         bindToAIDLService();
+
 
     }
 

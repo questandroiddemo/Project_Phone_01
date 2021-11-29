@@ -32,6 +32,15 @@ public interface IMyAidlInterface extends android.os.IInterface
     {
       return null;
     }
+    @Override public void deleteFavorite(int id) throws android.os.RemoteException
+    {
+    }
+    @Override public void addToFavorite(aidlservice.ContactModel contact) throws android.os.RemoteException
+    {
+    }
+    @Override public void addToRecent(aidlservice.ContactModel contact) throws android.os.RemoteException
+    {
+    }
     @Override
     public android.os.IBinder asBinder() {
       return null;
@@ -122,6 +131,43 @@ public interface IMyAidlInterface extends android.os.IInterface
           java.util.List<aidlservice.FavoriteModel> _result = this.getAllFavorites();
           reply.writeNoException();
           reply.writeTypedList(_result);
+          return true;
+        }
+        case TRANSACTION_deleteFavorite:
+        {
+          data.enforceInterface(descriptor);
+          int _arg0;
+          _arg0 = data.readInt();
+          this.deleteFavorite(_arg0);
+          reply.writeNoException();
+          return true;
+        }
+        case TRANSACTION_addToFavorite:
+        {
+          data.enforceInterface(descriptor);
+          aidlservice.ContactModel _arg0;
+          if ((0!=data.readInt())) {
+            _arg0 = aidlservice.ContactModel.CREATOR.createFromParcel(data);
+          }
+          else {
+            _arg0 = null;
+          }
+          this.addToFavorite(_arg0);
+          reply.writeNoException();
+          return true;
+        }
+        case TRANSACTION_addToRecent:
+        {
+          data.enforceInterface(descriptor);
+          aidlservice.ContactModel _arg0;
+          if ((0!=data.readInt())) {
+            _arg0 = aidlservice.ContactModel.CREATOR.createFromParcel(data);
+          }
+          else {
+            _arg0 = null;
+          }
+          this.addToRecent(_arg0);
+          reply.writeNoException();
           return true;
         }
         default:
@@ -266,6 +312,75 @@ public interface IMyAidlInterface extends android.os.IInterface
         }
         return _result;
       }
+      @Override public void deleteFavorite(int id) throws android.os.RemoteException
+      {
+        android.os.Parcel _data = android.os.Parcel.obtain();
+        android.os.Parcel _reply = android.os.Parcel.obtain();
+        try {
+          _data.writeInterfaceToken(DESCRIPTOR);
+          _data.writeInt(id);
+          boolean _status = mRemote.transact(Stub.TRANSACTION_deleteFavorite, _data, _reply, 0);
+          if (!_status && getDefaultImpl() != null) {
+            getDefaultImpl().deleteFavorite(id);
+            return;
+          }
+          _reply.readException();
+        }
+        finally {
+          _reply.recycle();
+          _data.recycle();
+        }
+      }
+      @Override public void addToFavorite(aidlservice.ContactModel contact) throws android.os.RemoteException
+      {
+        android.os.Parcel _data = android.os.Parcel.obtain();
+        android.os.Parcel _reply = android.os.Parcel.obtain();
+        try {
+          _data.writeInterfaceToken(DESCRIPTOR);
+          if ((contact!=null)) {
+            _data.writeInt(1);
+            contact.writeToParcel(_data, 0);
+          }
+          else {
+            _data.writeInt(0);
+          }
+          boolean _status = mRemote.transact(Stub.TRANSACTION_addToFavorite, _data, _reply, 0);
+          if (!_status && getDefaultImpl() != null) {
+            getDefaultImpl().addToFavorite(contact);
+            return;
+          }
+          _reply.readException();
+        }
+        finally {
+          _reply.recycle();
+          _data.recycle();
+        }
+      }
+      @Override public void addToRecent(aidlservice.ContactModel contact) throws android.os.RemoteException
+      {
+        android.os.Parcel _data = android.os.Parcel.obtain();
+        android.os.Parcel _reply = android.os.Parcel.obtain();
+        try {
+          _data.writeInterfaceToken(DESCRIPTOR);
+          if ((contact!=null)) {
+            _data.writeInt(1);
+            contact.writeToParcel(_data, 0);
+          }
+          else {
+            _data.writeInt(0);
+          }
+          boolean _status = mRemote.transact(Stub.TRANSACTION_addToRecent, _data, _reply, 0);
+          if (!_status && getDefaultImpl() != null) {
+            getDefaultImpl().addToRecent(contact);
+            return;
+          }
+          _reply.readException();
+        }
+        finally {
+          _reply.recycle();
+          _data.recycle();
+        }
+      }
       public static aidlservice.IMyAidlInterface sDefaultImpl;
     }
     static final int TRANSACTION_getText = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
@@ -274,6 +389,9 @@ public interface IMyAidlInterface extends android.os.IInterface
     static final int TRANSACTION_getAllRecents = (android.os.IBinder.FIRST_CALL_TRANSACTION + 3);
     static final int TRANSACTION_getAllContacts = (android.os.IBinder.FIRST_CALL_TRANSACTION + 4);
     static final int TRANSACTION_getAllFavorites = (android.os.IBinder.FIRST_CALL_TRANSACTION + 5);
+    static final int TRANSACTION_deleteFavorite = (android.os.IBinder.FIRST_CALL_TRANSACTION + 6);
+    static final int TRANSACTION_addToFavorite = (android.os.IBinder.FIRST_CALL_TRANSACTION + 7);
+    static final int TRANSACTION_addToRecent = (android.os.IBinder.FIRST_CALL_TRANSACTION + 8);
     public static boolean setDefaultImpl(aidlservice.IMyAidlInterface impl) {
       // Only one user of this interface can use this function
       // at a time. This is a heuristic to detect if two different
@@ -299,4 +417,7 @@ public interface IMyAidlInterface extends android.os.IInterface
   public java.util.List<aidlservice.RecentModel> getAllRecents() throws android.os.RemoteException;
   public java.util.List<aidlservice.ContactModel> getAllContacts() throws android.os.RemoteException;
   public java.util.List<aidlservice.FavoriteModel> getAllFavorites() throws android.os.RemoteException;
+  public void deleteFavorite(int id) throws android.os.RemoteException;
+  public void addToFavorite(aidlservice.ContactModel contact) throws android.os.RemoteException;
+  public void addToRecent(aidlservice.ContactModel contact) throws android.os.RemoteException;
 }

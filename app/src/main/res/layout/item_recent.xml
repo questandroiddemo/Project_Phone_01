@@ -4,15 +4,10 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:background="@drawable/rounded_corner"
+    android:backgroundTint="#5C03A9F4"
     android:orientation="horizontal"
     android:weightSum="10">
 
-    <Button
-        android:layout_width="0dp"
-        android:layout_height="32dp"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:background="@drawable/ic_launcher_foreground" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -29,13 +24,13 @@
             android:textColor="@color/black"
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/call_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="number"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/call_number"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="number"-->
+        <!--            android:textColor="@color/black"-->
+        <!--            android:textSize="16sp" />-->
 
         <TextView
             android:id="@+id/call_date"

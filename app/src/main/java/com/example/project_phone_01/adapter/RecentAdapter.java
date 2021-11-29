@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project_phone_01.R;
+
 import aidlservice.RecentModel;
 
 import java.util.List;
@@ -48,7 +49,7 @@ public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.ViewHolder
         date = holder.date;
 
         name.setText(mlistRecents.get(position).getName());
-        number.setText(mlistRecents.get(position).getNumber());
+//        number.setText(mlistRecents.get(position).getNumber());
         date.setText(mlistRecents.get(position).getDate());
 
     }
@@ -68,7 +69,7 @@ public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.ViewHolder
 //            itemView.setOnClickListener(this);
 
             name = itemView.findViewById(R.id.contact_name);
-            number = itemView.findViewById(R.id.call_number);
+//            number = itemView.findViewById(R.id.call_number);
             date = itemView.findViewById(R.id.call_date);
             callRecent = itemView.findViewById(R.id.btn_callRecent);
             callRecent.setOnClickListener(this);
@@ -83,17 +84,9 @@ public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.ViewHolder
             String number = recent.getNumber();
 
             //TODO to be replaced by 'redirect to primary call app'.
-            Toast.makeText(mContext, "The position is: " + position +
-                    ", Name: " + name + ", Number: " + number, Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, position + ") " +
+                    " Name: " + name + ", Number: " + number, Toast.LENGTH_SHORT).show();
 
-//            Intent callIntent = new Intent(Intent.ACTION_CALL);
-//            callIntent.setData(Uri.parse("tel:" + name));
-//
-//            if (ActivityCompat.checkSelfPermission(mContext,
-//                    Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-//                return;
-//            }
-//            mContext.startActivity(callIntent);
         }
 
 

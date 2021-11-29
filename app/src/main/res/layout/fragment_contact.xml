@@ -5,16 +5,20 @@
     android:layout_height="match_parent"
     tools:context=".view.ContactFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_contacts"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
+        android:id="@+id/empty_view_contact"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:gravity="center"
+        android:text="The contact list is empty"
+        android:textSize="20sp"
+        android:visibility="gone" />
 
 </FrameLayout>

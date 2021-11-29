@@ -5,9 +5,12 @@
       <map>
         <entry key="app/src/main/res/drawable/rounded_corner.xml" value="0.2037037037037037" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.11231884057971014" />
-        <entry key="app/src/main/res/layout/fragment_contact.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_contact.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.11730072463768115" />
         <entry key="app/src/main/res/layout/fragment_phone.xml" value="0.17239583333333333" />
         <entry key="app/src/main/res/layout/fragment_recent.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_contact.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_favorite.xml" value="0.1921875" />
         <entry key="app/src/main/res/layout/item_recent.xml" value="0.22" />
       </map>
     </option>

@@ -13,52 +13,55 @@
 11    <uses-permission android:name="android.permission.CALL_PHONE" />
 11-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:4:5-68
 11-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:4:22-66
-12
-13    <application
-13-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:6:5-29:19
-14        android:allowBackup="true"
-14-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:7:9-35
-15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-15-->[androidx.core:core:1.5.0] /home/quest/.gradle/caches/transforms-3/255d63c0f9f8f5d12ab3191ffb377750/transformed/core-1.5.0/AndroidManifest.xml:24:18-86
-16        android:debuggable="true"
-17        android:icon="@mipmap/ic_launcher"
-17-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:8:9-43
-18        android:label="@string/app_name"
-18-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:9:9-41
-19        android:roundIcon="@mipmap/ic_launcher_round"
-19-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:10:9-54
-20        android:supportsRtl="true"
-20-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:11:9-35
-21        android:testOnly="true"
-22        android:theme="@style/Theme.Phone_Service" >
-22-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:12:9-51
-23        <service
-23-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:13:9-18:19
-24            android:name="com.example.phone_service.MyService"
-24-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:14:13-38
-25            android:enabled="true"
-25-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:15:13-35
-26            android:exported="true" >
-26-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:16:13-36
-27        </service>
-28
-29        <activity
-29-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:20:9-28:20
-30            android:name="com.example.phone_service.MainActivity"
-30-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:21:13-41
-31            android:exported="true" >
-31-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:22:13-36
-32            <intent-filter>
-32-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:23:13-27:29
-33                <action android:name="android.intent.action.MAIN" />
-33-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:24:17-69
-33-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:24:25-66
-34
-35                <category android:name="android.intent.category.LAUNCHER" />
-35-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:26:17-77
-35-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:26:27-74
-36            </intent-filter>
-37        </activity>
-38    </application>
-39
-40</manifest>
+12    <uses-permission android:name="android.permission.READ_CONTACTS" />
+12-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:5:5-71
+12-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:5:22-69
+13
+14    <application
+14-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:7:5-30:19
+15        android:allowBackup="true"
+15-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:8:9-35
+16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+16-->[androidx.core:core:1.5.0] /home/quest/.gradle/caches/transforms-3/255d63c0f9f8f5d12ab3191ffb377750/transformed/core-1.5.0/AndroidManifest.xml:24:18-86
+17        android:debuggable="true"
+18        android:icon="@mipmap/ic_launcher"
+18-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:9:9-43
+19        android:label="@string/app_name"
+19-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:10:9-41
+20        android:roundIcon="@mipmap/ic_launcher_round"
+20-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:11:9-54
+21        android:supportsRtl="true"
+21-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:12:9-35
+22        android:testOnly="true"
+23        android:theme="@style/Theme.Phone_Service" >
+23-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:13:9-51
+24        <service
+24-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:14:9-19:19
+25            android:name="com.example.phone_service.MyService"
+25-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:15:13-38
+26            android:enabled="true"
+26-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:16:13-35
+27            android:exported="true" >
+27-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:17:13-36
+28        </service>
+29
+30        <activity
+30-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:21:9-29:20
+31            android:name="com.example.phone_service.MainActivity"
+31-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:22:13-41
+32            android:exported="true" >
+32-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:23:13-36
+33            <intent-filter>
+33-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:24:13-28:29
+34                <action android:name="android.intent.action.MAIN" />
+34-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:25:17-69
+34-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:25:25-66
+35
+36                <category android:name="android.intent.category.LAUNCHER" />
+36-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:27:17-77
+36-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:27:27-74
+37            </intent-filter>
+38        </activity>
+39    </application>
+40
+41</manifest>

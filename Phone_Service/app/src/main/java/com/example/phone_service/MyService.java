@@ -24,14 +24,14 @@ public class MyService extends Service {
     public IBinder onBind(Intent intent) {
         return iBinder;
     }
+
+
     IMyAidlInterface.Stub iBinder = new IMyAidlInterface.Stub() {
         @Override
         public String getText() throws RemoteException {
-
             return "hello from service app!!!!!!";
         }
 
-        //TODO: modify placeCall()
         @Override
         public void placeCall(String number) throws RemoteException {
 
@@ -55,15 +55,6 @@ public class MyService extends Service {
         @Override
         public List<RecentModel> getAllRecents() throws RemoteException {
             List<RecentModel> recentModelArrayList = new ArrayList<>();
-//            RecentModel recent = new RecentModel();
-//            recent.setName("Henry");
-//            recent.setNumber("779797999");
-//            recent.setDate();
-//            recentModelArrayList.add(recent);
-//            recentModelArrayList.add(recent);
-//            recentModelArrayList.add(recent);
-            //            return recentModelArrayList;
-
             PhoneDbHandler phoneDbHandler = new PhoneDbHandler(getApplicationContext());
             return phoneDbHandler.getAllRecents();
         }
@@ -81,6 +72,29 @@ public class MyService extends Service {
             return phoneDbHandler.getAllFavorites();
         }
 
+
+        @Override
+        public void deleteFavorite(int id) throws RemoteException {
+            PhoneDbHandler phoneDbHandler = new PhoneDbHandler(getApplicationContext());
+            phoneDbHandler.deleteFavoriteById(id);
+        }
+
+        @Override
+        public void addToFavorite(ContactModel contact) throws RemoteException {
+            PhoneDbHandler phoneDbHandler = new PhoneDbHandler(getApplicationContext());
+            phoneDbHandler.addFavorite(new FavoriteModel(contact.getName(), contact.getNumber()));
+            
+        }
+
+        @Override
+        public void addToRecent(ContactModel contact) throws RemoteException {
+            PhoneDbHandler phoneDbHandler = new PhoneDbHandler(getApplicationContext());
+            RecentModel recentModel = new RecentModel();
+            recentModel.setName(contact.getName());
+            recentModel.setNumber(contact.getNumber());
+            recentModel.setDate();
+            phoneDbHandler.addRecent(recentModel);
+        }
 
     };
 }

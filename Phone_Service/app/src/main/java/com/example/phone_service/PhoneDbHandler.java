@@ -148,7 +148,7 @@ public class PhoneDbHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(Params.FAVORITE_NAME, favorite.getName());
         values.put(Params.FAVORITE_NUMBER, favorite.getNumber());
-        //Upadte now, return of update() is number of affected rows
+        //Update now, return of update() is number of affected rows
         return db.update(Params.FAVORITES_TABLE_NAME, values, Params.FAVORITE_ID + "=?",
                 new String[]{String.valueOf(favorite.getId())});
 

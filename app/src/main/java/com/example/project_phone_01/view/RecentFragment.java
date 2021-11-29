@@ -15,9 +15,11 @@ import android.widget.TextView;
 
 import com.example.project_phone_01.MainActivity;
 import com.example.project_phone_01.R;
+import com.example.project_phone_01.adapter.FavoriteAdapter;
 import com.example.project_phone_01.adapter.RecentAdapter;
 import com.example.project_phone_01.presenter.RecentPresenter;
 
+import aidlservice.FavoriteModel;
 import aidlservice.RecentModel;
 
 import java.util.ArrayList;
@@ -28,6 +30,8 @@ public class RecentFragment extends Fragment implements RecentPresenter.View{
     private RecyclerView recyclerView;
     private View v;
     private RecentPresenter presenter;
+    private  RecentAdapter recentAdapter;
+    private  TextView textView;
 
 
     public RecentFragment() {
@@ -43,29 +47,21 @@ public class RecentFragment extends Fragment implements RecentPresenter.View{
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_recent, container, false);
         recyclerView = v.findViewById(R.id.rv_recents);
-        TextView textView = v.findViewById(R.id.empty_view);
+         textView = v.findViewById(R.id.empty_view);
 
 
         presenter.recentAdapter();
 
         getCallLogs();
 
-        // dummy contacts
         List<RecentModel> listRecents = new ArrayList<>();
-//        RecentModel contact1 = new RecentModel("Jim", "9879898989", "Nov 18 2021");
-//        RecentModel contact2 = new RecentModel("Tom", "2121212121", "Nov 18 2021");
-//        RecentModel contact3 = new RecentModel("Jerrin", "4343434343", "Nov 18 2021");
-//        listRecents.add(contact1);
-//        listRecents.add(contact2);
-//        listRecents.add(contact3);
-
         try {
             listRecents.addAll(MainActivity.getAidl().getAllRecents());
         } catch (RemoteException e) {
             e.printStackTrace();
         }
 
-        RecentAdapter recentAdapter = new RecentAdapter(getContext(), listRecents);
+         recentAdapter = new RecentAdapter(getContext(), listRecents);
 
         //to display empty call log message
 
@@ -94,4 +90,40 @@ public class RecentFragment extends Fragment implements RecentPresenter.View{
         recyclerView.setLayoutManager(layoutManager);
         Log.d("TAG", "recentAdapterInView: ");
     }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateRecentList();
+        //to display empty call log message
+        updateVisibility();
+    }
+
+
+    public void updateRecentList() {
+        List<RecentModel> recentList = new ArrayList<>();
+
+        try {
+            recentList.addAll(MainActivity.getAidl().getAllRecents());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+        recentAdapter = new RecentAdapter(getContext(), recentList);
+        recyclerView.setAdapter(recentAdapter);
+    }
+
+    public void updateVisibility(){
+        if (recentAdapter.getItemCount() == 0) {
+            recyclerView.setVisibility(View.GONE);
+            textView.setVisibility(View.VISIBLE);
+        } else {
+            recyclerView.setVisibility(View.VISIBLE);
+            textView.setVisibility(View.GONE);
+        }
+
+    }
+
+
 }
