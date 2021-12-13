@@ -79,7 +79,7 @@ public class PhoneFragment extends Fragment {
             }else {
                 try {
                     String number= edtPhoneNo.getText().toString();
-                    MainActivity.getAidl().placeCall("tel:" + number);
+                    MainActivity.getAidl().placeCall(number);
                     //MainActivity.getAidl().addNumberToRecent(number);
 
                 } catch (RemoteException e) {
