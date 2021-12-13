@@ -22,7 +22,7 @@
 15        android:allowBackup="true"
 15-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:8:9-35
 16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-16-->[androidx.core:core:1.5.0] /home/quest/.gradle/caches/transforms-3/255d63c0f9f8f5d12ab3191ffb377750/transformed/core-1.5.0/AndroidManifest.xml:24:18-86
+16-->[androidx.core:core:1.5.0] /home/quest/AndroidStudioProjects/AIDL_multiply/caches/transforms-3/255d63c0f9f8f5d12ab3191ffb377750/transformed/core-1.5.0/AndroidManifest.xml:24:18-86
 17        android:debuggable="true"
 18        android:icon="@mipmap/ic_launcher"
 18-->/home/quest/AndroidStudioProjects/Project_Phone_01/Phone_Service/app/src/main/AndroidManifest.xml:9:9-43

@@ -1,66 +1,115 @@
 package com.example.project_phone_01.view;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.os.RemoteException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.content.Intent;
+import android.net.Uri;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.example.project_phone_01.MainActivity;
 import com.example.project_phone_01.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PhoneFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class PhoneFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private EditText edtPhoneNo;
+    private View x;
+    private Button btnZero, btnOne, btnTwo, btnThree, btnFour, btnFive, btnSix, btnSeven, btnEight, btnNine, btnCall;
+    private ImageButton btndel;
 
     public PhoneFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PhoneFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PhoneFragment newInstance(String param1, String param2) {
-        PhoneFragment fragment = new PhoneFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_phone, container, false);
+        x = inflater.inflate(R.layout.fragment_phone, container, false);
+        edtPhoneNo = x.findViewById(R.id.edtPhoneNumber);
+        btnZero = x.findViewById(R.id.btnZero);
+        btnOne = x.findViewById(R.id.btnOne);
+        btnTwo = x.findViewById(R.id.btnTwo);
+        btnThree = x.findViewById(R.id.btnThree);
+        btnFour = x.findViewById(R.id.btnFour);
+        btnFive = x.findViewById(R.id.btnFive);
+        btnSix = x.findViewById(R.id.btnSix);
+        btnSeven = x.findViewById(R.id.btnSeven);
+        btnEight = x.findViewById(R.id.btnEight);
+        btnNine = x.findViewById(R.id.btnNine);
+        btndel = x.findViewById(R.id.btndel);
+        btnCall = x.findViewById(R.id.btnCall);
+
+        btnZero.setOnClickListener(v -> edtPhoneNo.setText(edtPhoneNo.getText() + "0"));
+        btnOne.setOnClickListener(v -> edtPhoneNo.setText(edtPhoneNo.getText() + "1"));
+        btnTwo.setOnClickListener(v -> edtPhoneNo.setText(edtPhoneNo.getText() + "2"));
+        btnThree.setOnClickListener(v -> edtPhoneNo.setText(edtPhoneNo.getText() + "3"));
+        btnFour.setOnClickListener(v -> edtPhoneNo.setText(edtPhoneNo.getText() + "4"));
+        btnFive.setOnClickListener(v -> edtPhoneNo.setText(edtPhoneNo.getText() + "5"));
+        btnSix.setOnClickListener(v -> edtPhoneNo.setText(edtPhoneNo.getText() + "6"));
+        btnSeven.setOnClickListener(v -> edtPhoneNo.setText(edtPhoneNo.getText() + "7"));
+        btnEight.setOnClickListener(v -> edtPhoneNo.setText(edtPhoneNo.getText() + "8"));
+        btnNine.setOnClickListener(v -> edtPhoneNo.setText(edtPhoneNo.getText() + "9"));
+        btndel.setOnClickListener(v -> {
+            String str=edtPhoneNo.getText().toString();
+            if(str.length()>=1){
+                str=str.substring(0,str.length()-1);
+                edtPhoneNo.setText(str);
+            }else if (str.length()<1){
+                edtPhoneNo.setText("");
+            }
+        });
+
+        btnCall.setOnClickListener(v -> {
+
+            if (edtPhoneNo.getText().length() < 10 || edtPhoneNo.getText().length() > 10 ) {
+                Toast.makeText(getContext(), "Please enter a valid number", Toast.LENGTH_SHORT).show();
+            }else {
+                try {
+                    String number= edtPhoneNo.getText().toString();
+                    MainActivity.getAidl().placeCall("tel:" + number);
+                    //MainActivity.getAidl().addNumberToRecent(number);
+
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        });
+        permissionCallPhone();
+        return x;
+    }
+
+    private void permissionCallPhone() {
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, 1);
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
